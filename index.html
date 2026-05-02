@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ali Israr - technology leader, engineer, inventor, and researcher in haptics, tactile interfaces, and interactive touch systems.">
+    <title>Ali Israr | Technology Leader, Engineer, Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Ali Israr home">
+        <span class="brand-mark">AI</span>
+        <span>Ali Israr</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#media">Media</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-shell" id="about">
+        <div class="hero-copy">
+          <p class="eyebrow">Technology leader · Engineer · Researcher</p>
+          <div class="bio">
+            <p>Ali Israr is a technology leader, inventor, engineer, and researcher with more than two decades of experience advancing interactive touch systems. He has worked across industry-leading haptics programs at Meta / Facebook Reality Labs, Disney Research, and ByteDance, where he helped lead research and product innovation in tactile interfaces and sensory technologies.</p>
+            <p>His research spans spatial haptics, affective and social touch, cross-modal perception, wearable feedback systems, multimodal interaction design, HCI and robotics. Ali has published more than 100 scientific publications and granted over 30 patents, reflecting sustained contributions to both foundational research and applied product development.</p>
+            <p>Ali holds a Ph.D. degree in Mechanical Engineering from Purdue University. His contributions have been widely recognized through Best Paper and Best Demo Awards and featured by major media outlets such as CNN, MIT Technology Review, Wired, BBC, NBC, Variety, and The Washington Post.</p>
+          </div>
+          <div class="hero-actions" aria-label="Professional links">
+            <a class="button primary" href="assets/docs/Ali%20Israr%20CV%202026.pdf" target="_blank" rel="noopener">CV</a>
+            <a class="button" href="https://scholar.google.com/citations?user=lo4v844AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="button" href="https://www.linkedin.com/in/aliisrar/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <div class="portrait-panel">
+          <!-- <img src="assets/images/Israr-picture.png" alt="Portrait of Ali Israr"> -->
+          <img src="assets/images/Ali-web.jpg" alt="Portrait of Ali Israr">
+        </div>
+      </section>
+
+      <section class="stats-band" aria-label="Career highlights">
+        <div>
+          <strong>20+</strong>
+          <span>Years in industry</span>
+        </div>
+        <div>
+          <strong>100+</strong>
+          <span>Scientific publications</span>
+        </div>
+        <div>
+          <strong>30+</strong>
+          <span>Granted patents</span>
+        </div>
+      </section>
+
+      <section class="content-section" id="media">
+        <div class="section-heading">
+          <p class="eyebrow">Selected press</p>
+          <h2>Media Coverage</h2>
+        </div>
+        <div class="carousel-wrap">
+          <button class="carousel-button previous" type="button" aria-label="Scroll media coverage left">‹</button>
+          <div class="media-carousel" id="mediaCarousel" tabindex="0" aria-label="Media coverage carousel"></div>
+          <button class="carousel-button next" type="button" aria-label="Scroll media coverage right">›</button>
+        </div>
+      </section>
+
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Research and product work</p>
+          <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="contact-copy">
+          <p class="eyebrow">Get in touch</p>
+          <h2>Contact</h2>
+          <p>For collaborations, research conversations, speaking, or advising inquiries, send a note directly.</p>
+          <!-- <a href="mailto:mail2aliisrar@gmail.com">mail2aliisrar@gmail.com</a> -->
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/mail2aliisrar@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Portfolio website inquiry">
+          <input type="hidden" name="_captcha" value="false">
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button class="button primary" type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Ali Israr</span>
+      <span>Haptics · Interaction · Research</span>
+    </footer>
+
+    <script src="project-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
