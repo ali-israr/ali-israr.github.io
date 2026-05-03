@@ -134,9 +134,43 @@ function primaryProjectImage(project) {
 }
 
 function linkTypeLabel(url) {
-  if (url.includes("youtube.com") || url.includes("youtu.be")) return "Video";
   if (url.includes("patent")) return "Patent";
   return "Publication";
+}
+
+function youtubeEmbedUrl(url) {
+  try {
+    const parsed = new URL(url);
+    let id = "";
+    if (parsed.hostname.includes("youtu.be")) {
+      id = parsed.pathname.replace("/", "");
+    } else if (parsed.hostname.includes("youtube.com")) {
+      id = parsed.searchParams.get("v") || "";
+    }
+    if (!id) return "";
+
+    const params = new URLSearchParams({
+      rel: "0",
+      playsinline: "1",
+    });
+    const time = parsed.searchParams.get("t");
+    if (time) params.set("start", parseYouTubeTime(time));
+    return `https://www.youtube.com/embed/${id}?${params.toString()}`;
+  } catch {
+    return "";
+  }
+}
+
+function parseYouTubeTime(value) {
+  if (/^\d+$/.test(value)) return value;
+  const hours = value.match(/(\d+)h/);
+  const minutes = value.match(/(\d+)m/);
+  const seconds = value.match(/(\d+)s/);
+  return String(
+    (hours ? Number(hours[1]) * 3600 : 0) +
+    (minutes ? Number(minutes[1]) * 60 : 0) +
+    (seconds ? Number(seconds[1]) : 0)
+  );
 }
 
 function renderMedia() {
@@ -196,11 +230,29 @@ function renderProjectPage() {
       <img src="${assetUrl("assets/images", image)}" alt="${escapeHtml(project.title)} project image">
     </figure>
   `).join("");
-  const externalLinks = project.links.map((link) => `
+  const videoLinks = project.links.filter((link) => youtubeEmbedUrl(link.url));
+  const publicationLinks = project.links.filter((link) => !youtubeEmbedUrl(link.url));
+  const externalLinks = publicationLinks.map((link) => `
     <a class="resource-link" href="${link.url}" target="_blank" rel="noopener">
       <span>${escapeHtml(link.label)}</span>
       <small>${linkTypeLabel(link.url)}</small>
     </a>
+  `).join("");
+  const videos = videoLinks.map((link) => `
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="${youtubeEmbedUrl(link.url)}"
+          title="${escapeHtml(link.label)}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+      <figcaption>
+        <span>${escapeHtml(link.label)}</span>
+        <a href="${link.url}" target="_blank" rel="noopener">Open on YouTube</a>
+      </figcaption>
+    </figure>
   `).join("");
   const citation = project.citation ? `
     <div class="citation">
@@ -223,14 +275,25 @@ function renderProjectPage() {
     </section>
     <section class="project-resources" aria-label="Project links">
       <div class="section-heading">
-        <p class="eyebrow">Papers and media</p>
-        <h2>Links</h2>
+        <p class="eyebrow">Papers and resources</p>
+        <h2>Publications</h2>
       </div>
       <div class="resource-grid">
         ${externalLinks}
       </div>
       ${citation}
     </section>
+    ${videos ? `
+      <section class="project-videos" aria-label="${escapeHtml(project.title)} videos">
+        <div class="section-heading">
+          <p class="eyebrow">Project media</p>
+          <h2>Videos</h2>
+        </div>
+        <div class="video-grid">
+          ${videos}
+        </div>
+      </section>
+    ` : ""}
     <section class="project-gallery" aria-label="${escapeHtml(project.title)} gallery">
       <div class="section-heading">
         <p class="eyebrow">Project images</p>

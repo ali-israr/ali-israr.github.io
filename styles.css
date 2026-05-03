@@ -476,6 +476,7 @@ h3 {
 }
 
 .project-resources,
+.project-videos,
 .project-gallery {
   margin-top: clamp(42px, 7vw, 84px);
 }
@@ -516,6 +517,47 @@ h3 {
   padding: 5px 9px;
 }
 
+.video-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.video-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin: 0;
+  overflow: hidden;
+}
+
+.video-frame {
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+}
+
+.video-frame iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.video-card figcaption {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 0.92rem;
+  font-weight: 800;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px 16px 16px;
+}
+
+.video-card figcaption a {
+  color: var(--blue);
+  flex: 0 0 auto;
+}
+
 .project-gallery .detail-panel img {
   aspect-ratio: 16 / 10;
   height: 100%;
@@ -554,6 +596,7 @@ h3 {
   .stats-band,
   .projects-grid,
   .project-detail-grid,
+  .video-grid,
   .resource-grid {
     grid-template-columns: 1fr;
   }
