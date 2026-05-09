@@ -158,7 +158,7 @@ const PROJECTS = [
     ],
     links: [
       { label: "TeslaTouch electrovibration for touch surfaces", url: "https://la.disneyresearch.com/wp-content/uploads/teslatouchuist20101.pdf" },
-      { label: "TeslaTouch video", url: "https://www.youtube.com/watch?v=zo1n5CyCKr0" },
+      { label: "TeslaTouch video", url: "https://www.youtube.com/watch?v=MHNrQlpstJo" },
       { label: "Tactile display for visually impaired users", url: "https://dl.acm.org/doi/pdf/10.1145/1979742.1979705" },
       { label: "Tactile feedback on flat surfaces", url: "https://dl.acm.org/doi/pdf/10.1145/2212776.2223674" },
       { label: "A tactile palette for graphic content", url: "https://www.researchgate.net/publication/404301641_A_Tactile_Palette_to_Translate_Graphics_for_the_Visually_Impaired"},
